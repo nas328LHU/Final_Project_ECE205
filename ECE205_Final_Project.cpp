@@ -8,6 +8,8 @@
 using namespace std;
 
 // Basis for building the Tree
+
+
 struct TreeNode {
     string value;
     TreeNode* left;
@@ -17,6 +19,8 @@ struct TreeNode {
 };
 
 // Function Tokenizer
+
+
 vector<string> tokenizer(const string& expr) {
     vector<string> tokens;
     string currentoke = "";
@@ -40,6 +44,8 @@ vector<string> tokenizer(const string& expr) {
 }
 
 // Precedence formation
+
+
 int get_precedence(const string& op) {
     if (op == "+" || op == "-") return 1;
     if (op == "*" || op == "/") return 2;
@@ -47,6 +53,8 @@ int get_precedence(const string& op) {
 }
 
 // Infix to postfix transformation 
+
+
 vector<string> inFIX_to_postFIX(const vector<string>& tokens) {
     vector<string> postfix;
     stack<string> opStack;
@@ -84,6 +92,8 @@ vector<string> inFIX_to_postFIX(const vector<string>& tokens) {
 }
 
 // Postfix to tree transformation
+
+
 TreeNode* build_exp_tree(const vector<string>& postfix) {
     if (postfix.empty()) return nullptr;
     stack<TreeNode*> treeStack;
@@ -109,6 +119,8 @@ TreeNode* build_exp_tree(const vector<string>& postfix) {
 }
 
 // postfix outputed expression
+
+
 void print_postFIX(TreeNode* root) {
     if (!root) return;
     print_postFIX(root->left);
@@ -117,6 +129,8 @@ void print_postFIX(TreeNode* root) {
 }
 
 // visual representation of binary tree
+
+
 void print_Tree(TreeNode* root, int depth = 0) {
     if (!root) return;
     for (int i = 0; i < depth; ++i) {
@@ -127,7 +141,12 @@ void print_Tree(TreeNode* root, int depth = 0) {
     print_Tree(root->right, depth + 1);
 }
 
+
+
+
 // stack evaluation
+
+
 int stack_evaluation_tree(TreeNode* root) {
     if (!root) return 0;
 
@@ -161,7 +180,7 @@ int stack_evaluation_tree(TreeNode* root) {
             else if (node->value == "-") evalStack.push(Lopp - Ropp);
             else if (node->value == "*") evalStack.push(Lopp * Ropp);
             else if (node->value == "/") {
-                if (Ropp == 0) return 0; // Prevent division by zero
+                if (Ropp == 0) return 0; 
                 evalStack.push(Lopp / Ropp);
             }
         }
@@ -170,6 +189,8 @@ int stack_evaluation_tree(TreeNode* root) {
 }
 
 // tree cleaner
+
+
 void tree_cleaner(TreeNode* root) {
     if (!root) return;
     tree_cleaner(root->left);
@@ -184,7 +205,7 @@ int main() {
     cout << "Enter an infix expression (e.g., (16 + 2) * 5 - 28 / 4):" << endl;
 
 
-    // User input for Infix
+  // User input for Infix
 
 
     getline(cin, infixExpr);
@@ -194,7 +215,6 @@ int main() {
         return 0;
     }
 
-    // Process the expression
     vector<string> tokens = tokenizer(infixExpr);
     vector<string> postfix = inFIX_to_postFIX(tokens);
     TreeNode* root = build_exp_tree(postfix);
