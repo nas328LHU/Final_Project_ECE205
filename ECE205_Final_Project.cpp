@@ -183,7 +183,10 @@ int main() {
     cout << "=== Expression Tree Builder ===" << endl;
     cout << "Enter an infix expression (e.g., (16 + 2) * 5 - 28 / 4):" << endl;
 
-    // Use getline to capture the entire expression including spaces
+
+    // User input for Infix
+
+
     getline(cin, infixExpr);
 
     if (infixExpr.empty()) {
@@ -213,7 +216,6 @@ int main() {
     int result = stack_evaluation_tree(root);
     cout << "c) Final Evaluation: " << result << "\n";
 
-    // Clean up memory
     tree_cleaner(root);
 
     return 0;
