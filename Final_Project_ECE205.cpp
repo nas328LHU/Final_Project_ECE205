@@ -20,7 +20,7 @@ struct TreeNode {
 
 
 
-// Function Tokenizer (clears space)
+// Function Tokenizer
 
 
 vector<string> tokenizer(const string& expr) {
@@ -126,7 +126,7 @@ void print_postFIX(TreeNode* root) {
 }
 
 
-// visual representation of the binary tree
+// visual representation of binary tree
 
 
 void print_Tree(TreeNode* root, int depth = 0) {
@@ -142,7 +142,7 @@ void print_Tree(TreeNode* root, int depth = 0) {
 }
 
 
-// stack evaluation of the tree
+// stack evaluation
 
 int stack_evaluation_tree(TreeNode* root) {
     if (!root) return 0;
